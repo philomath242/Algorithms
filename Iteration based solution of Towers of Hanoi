@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+void TowersofHanoi(int n, char from, char to, char aux);
+int main() {
+	int n;
+	printf("How many disks are there ? \n ");
+	scanf("%d", &n);
+	TowersofHanoi(n, 'A','C','B');
+	return 1;
+}
+void TowersofHanoi(int n, char from, char to, char aux){
+    
+    if(n==1){
+        printf("move disk 1  %c >>> %c \n ", from, to);
+        return; }
+        
+    TowersofHanoi(n-1,from, aux, to);
+     printf("move disk %d  %c >>> %c \n ",n, from, to);
+    TowersofHanoi(n-1,aux, to, from);
+}
