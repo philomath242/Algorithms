@@ -32,6 +32,7 @@ void CountingSort(int unsorted_array[], int size){
     for(i = 0; i < size; i++){
         count[unsorted_array[i]]++;
     }
+    count[0] -= 1;
     for(i = 1; i <= max; i++){
         count[i] += count[i - 1];
     }
