@@ -12,6 +12,7 @@ int Partition(int unsorted_array[], int start, int end);
 void HeapSort(int array[], int size);
 void Heapify(int array[], int size, int i);
 void Print(int array[], int size);
+void Exchange(int array[], int i, int j);
 
 int main(){
     int numbers[] = {9, 6, 1, 3, 7, 2, 8, 5, 4};
@@ -175,6 +176,14 @@ void Print(int array[], int size){
         printf("%d, ", array[i]);
     }
     printf("\b\b ]\n");
+    return;
+}
+void Exchange(int array[], int i, int j){
+    int* temp = (int*)malloc(sizeof(int));
+    *temp = array[i];
+    array[i] = array[j];
+    array[j] = *temp;
+    free(temp);
     return;
 }
 
