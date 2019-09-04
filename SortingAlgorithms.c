@@ -137,21 +137,21 @@ void Heapify(int array[], int size, int i){
         max = right;
     }
     if(max != i){
-        Exchange(unsorted_array, max, i);
+        Exchange(array, max, i);
         Heapify(array, size, max);
     }
     return;
 }
 
-void HeapSort(int array[], int size){
+void HeapSort(int unsorted_array[], int size){
     int i;
     
     for(i = size/2 - 1; i >= 0; i--){
-        Heapify(array, size, i);
+        Heapify(unsorted_array, size, i);
     }
     for(i = size - 1; i >= 0; i--){
         Exchange(unsorted_array, 0, i);        
-        Heapify(array, i, 0);
+        Heapify(unsorted_array, i, 0);
     }
     return;
 }
