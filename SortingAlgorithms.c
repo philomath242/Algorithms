@@ -115,17 +115,17 @@ void QuickSort(int unsorted_array[], int start, int end){
 	}
 	return;
 }
-int Partition(int unsorted_array[], int start, int end){
-	int pivot = unsorted_array[end], i = start - 1, j;  
+int Partition(int array[], int start, int end){
+	int pivot = array[end], i = start, j;  
   
     for (j = start; j <= end - 1; j++){
-        if (unsorted_array[j] <= pivot){
-	    i++;	
-            Exchange(unsorted_array, j, i);
+        if (array[j] <= pivot){
+	    Exchange(array, j, i);
+            i++;
         }  
     }  
-    Exchange(unsorted_array, end, i + 1);
-    return i + 1;
+    Exchange(array, end, i);
+    return i;
 }
 void Heapify(int array[], int size, int i){
     int max = i, left = 2*i + 1, right = 2*i + 2;
