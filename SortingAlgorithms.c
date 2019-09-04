@@ -52,7 +52,7 @@ void SelectionSort(int unsorted_array[], int size){
 }
 void MergeSort(int unsorted_array[], int left, int right){
     if(left < right){
-        int middle = (int)floor((left + right)/2);
+        int middle = (left + right)/2;
         MergeSort(unsorted_array, left, middle);
         MergeSort(unsorted_array, middle + 1, right);
         Merge(unsorted_array, left, middle, right);
