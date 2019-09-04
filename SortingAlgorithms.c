@@ -37,20 +37,17 @@ void InsertionSort(int unsorted_array[], int size){
     return;
 }
 void SelectionSort(int unsorted_array[], int size){
-    int i, min, j, key;
-    for(i = 0; i < size - 1; i++){
-        min = i;
-        for(j = i + 1; j < size; j++){
-            if(unsorted_array[j] < unsorted_array[min]){
-                min = j;
-            }
-        }
-       key = unsorted_array[i];
-       unsorted_array[i] = unsorted_array[min];
-       unsorted_array[min] = key;
+    int i, j, min;
+    for (i = 0; i < size - 1; i++){      
+       min = i;
+       for (j = i + 1; j < size; j++){
+           if(unsorted_array[j] < unsorted_array[min]){
+               min = j;
+           }
+       }
+       Exchange(unsorted_array, min, i);
     }
     return;
-    
 }
 void MergeSort(int unsorted_array[], int left, int right){
     if(left < right){
@@ -95,14 +92,12 @@ void Merge(int unsorted_array[], int left, int middle, int right){
     return;
 }
 void BubbleSort(int unsorted_array[], int size){
-    int i, j, temp, swapped;
+    int i, j, swapped;
     for(i = 0; i < size - 1; i++){
         swapped = 0; 
         for (j = 0; j <size - i - 1; j++){ 
             if (unsorted_array[j] > unsorted_array[j + 1]){ 
-               temp = unsorted_array[j];
-               unsorted_array[j] = unsorted_array[j + 1];
-               unsorted_array[j + 1] = temp;
+               Exchange(unsorted_array, j, j + 1);
                swapped = 1; 
             } 
         }
@@ -120,23 +115,19 @@ void QuickSort(int unsorted_array[], int start, int end){
 	return;
 }
 int Partition(int unsorted_array[], int start, int end){
-	int pivot = unsorted_array[end], i = start - 1, j, temp;  
+	int pivot = unsorted_array[end], i = start - 1, j;  
   
     for (j = start; j <= end - 1; j++){
         if (unsorted_array[j] <= pivot){
-			i++;	
-            temp = unsorted_array[j];
-            unsorted_array[j] = unsorted_array[i];
-            unsorted_array[i] = temp;
+	    i++;	
+            Exchange(unsorted_array, j, i);
         }  
     }  
-    temp = unsorted_array[end];
-    unsorted_array[end] = unsorted_array[i + 1];
-    unsorted_array[i + 1] = temp;  
+    Exchange(unsorted_array, end, i + 1);
     return i + 1;
 }
 void Heapify(int array[], int size, int i){
-    int max = i, temp, left = 2*i + 1, right = 2*i + 2;
+    int max = i, left = 2*i + 1, right = 2*i + 2;
     
     if(left < size && array[i] < array[left]){
         max = left;
@@ -145,25 +136,20 @@ void Heapify(int array[], int size, int i){
         max = right;
     }
     if(max != i){
-        temp = array[max];
-        array[max] = array[i];
-        array[i] = temp;
+        Exchange(unsorted_array, max, i);
         Heapify(array, size, max);
     }
     return;
 }
 
 void HeapSort(int array[], int size){
-    int i, temp;
+    int i;
     
     for(i = size/2 - 1; i >= 0; i--){
         Heapify(array, size, i);
     }
     for(i = size - 1; i >= 0; i--){
-        temp = array[i];
-        array[i] = array[0];
-        array[0] = temp;
-        
+        Exchange(unsorted_array, 0, i);        
         Heapify(array, i, 0);
     }
     return;
