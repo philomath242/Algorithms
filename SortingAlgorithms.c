@@ -64,14 +64,14 @@ void Merge(int unsorted_array[], int left, int middle, int right){
     int n1 = middle - left + 1; 
     int n2 =  right - middle; 
 
-    int Left[middle - left + 1], Right[right - middle]; 
+    int Left[n1], Right[n2]; 
     
-    for (i = 0; i < middle - left + 1; i++)Left[i] = unsorted_array[left + i]; 
-    for (j = 0; j < right - middle; j++)Right[j] = unsorted_array[middle + j + 1]; 
+    for (i = 0; i < n1; i++)Left[i] = unsorted_array[left + i]; 
+    for (j = 0; j < n2; j++)Right[j] = unsorted_array[middle + j + 1]; 
   
     i = 0; j = 0; k = left;
     
-    while (i < middle - left + 1 && j < right - middle){ 
+    while (i < n1 && j < n2){ 
         if (Left[i] <= Right[j]){ 
             unsorted_array[k] = Left[i]; 
             i++; 
@@ -82,7 +82,7 @@ void Merge(int unsorted_array[], int left, int middle, int right){
         } 
         k++; 
     } 
-    while (i < middle - left + 1){ 
+    while (i < n1){ 
         unsorted_array[k] = Left[i]; 
         i++; k++; 
     }
